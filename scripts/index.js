@@ -59,10 +59,7 @@
 		function onSuccess(position) {
 			 alert('Latitude: '          + position.coords.latitude          + '\n' +
               'Longitude: '         + position.coords.longitude         + '\n');
-        var element = document.getElementById('geo');
-        element.innerHTML = 'Latitude: '  + position.coords.latitude      + '<br />' +
-                            'Longitude: ' + position.coords.longitude     + '<br />' +
-                            '<hr />'      + element.innerHTML;
+        
     }
  
     // onError Callback receives a PositionError object 
@@ -75,7 +72,7 @@
     // Options: throw an error if no update is received every 30 seconds. 
     // 
 	navigator.geolocation.getCurrentPosition(onSuccess, onError);
-    navigator.geolocation.watchPosition(onSuccess, onError, { timeout: 30000 });
+    
 	}
 
 
