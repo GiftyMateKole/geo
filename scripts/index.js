@@ -46,7 +46,7 @@
           alert("Scanning failed: " + error);
       },
       {
-          "preferFrontCamera" : true, // iOS and Android 
+          "preferFrontCamera" : false, // iOS and Android 
           "showFlipCameraButton" : true, // iOS and Android 
           "prompt" : "Place a barcode inside the scan area", // supported on Android only 
           "formats" : "QR_CODE,PDF_417", // default: all but PDF_417 and RSS_EXPANDED 
@@ -57,7 +57,7 @@
 
 	document.getElementById("geo").onclick = function geo () {
 	function onSuccess(position) {
-        var element = document.getElementById('g');
+        var element = document.getElementById('geo');
         element.innerHTML = 'Latitude: '  + position.coords.latitude      + '<br />' +
                             'Longitude: ' + position.coords.longitude     + '<br />' +
                             '<hr />'      + element.innerHTML;
