@@ -57,7 +57,7 @@
 
 	document.getElementById("geo").onclick = function geo () {
 	function onSuccess(position) {
-        var element = document.getElementById('geo');
+        var element = document.getElementById('g');
         element.innerHTML = 'Latitude: '  + position.coords.latitude      + '<br />' +
                             'Longitude: ' + position.coords.longitude     + '<br />' +
                             '<hr />'      + element.innerHTML;
