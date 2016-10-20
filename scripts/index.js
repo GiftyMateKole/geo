@@ -69,10 +69,7 @@
     }
  
     navigator.geolocation.getCurrentPosition(onSuccess, onError);
-    
-	}
 	
-	document.getElementById("g") = function watch () {
 	function onSuccess(position) {
         var element = document.getElementById('g');
         element.innerHTML = 'Latitude: '  + position.coords.latitude      + '<br />' +
@@ -90,8 +87,10 @@
     // Options: throw an error if no update is received every 30 seconds. 
     // 
     var watchID = navigator.geolocation.watchPosition(onSuccess, onError, { timeout: 30000 });
-	
+    
 	}
+	
+	
 
 
 
