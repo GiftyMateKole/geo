@@ -56,8 +56,25 @@
 }
 
 	document.getElementById("geo").onclick = function geo () {
+	var onSuccess = function(position) {
+        alert('Latitude: '          + position.coords.latitude          + '\n' +
+              'Longitude: '         + position.coords.longitude         + '\n' );
+    };
+ 
+    // onError Callback receives a PositionError object 
+    // 
+    function onError(error) {
+        alert('code: '    + error.code    + '\n' +
+              'message: ' + error.message + '\n');
+    }
+ 
+    navigator.geolocation.getCurrentPosition(onSuccess, onError);
+    
+	}
+	
+	document.getElementById("g") = function watch () {
 	function onSuccess(position) {
-        var element = document.getElementById('geo');
+        var element = document.getElementById('g');
         element.innerHTML = 'Latitude: '  + position.coords.latitude      + '<br />' +
                             'Longitude: ' + position.coords.longitude     + '<br />' +
                             '<hr />'      + element.innerHTML;
@@ -73,8 +90,7 @@
     // Options: throw an error if no update is received every 30 seconds. 
     // 
     var watchID = navigator.geolocation.watchPosition(onSuccess, onError, { timeout: 30000 });
- 
-    
+	
 	}
 
 
