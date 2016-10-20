@@ -14,6 +14,18 @@
 				destinationType : destinationType.DATA_URL
 			});
 		}
+		
+		document.getElementById("geo").addEventListener("click", function() {
+			navigator.geolocation.getCurrentPosition(onSuccess, onError, {
+				enableHighAccuracy : true
+			});
+		});
+		
+		var watchId = navigator.geolocation.watchPosition(onWatchSuccess, onWatchError, {
+			timeout : 30000
+		});
+
+		
 		  
 		  
 	
@@ -55,39 +67,23 @@
    );
 }
 
-	document.getElementById("geo").onclick = function geo () {
 	var onSuccess = function(position) {
-        alert('Latitude: '          + position.coords.latitude          + '\n' +
-              'Longitude: '         + position.coords.longitude         + '\n' );
-    };
- 
-    // onError Callback receives a PositionError object 
-    // 
-    function onError(error) {
-        alert('code: '    + error.code    + '\n' +
-              'message: ' + error.message + '\n');
-    }
- 
-    navigator.geolocation.getCurrentPosition(onSuccess, onError);
+		alert('Latitude: ' + position.coords.latitude + '\n' + 'Longitude: ' + position.coords.longitude + '\n');
+	};
+
 	
-	function onWatchSuccess(position) {
-        var element = document.getElementById('g');
-        element.innerHTML = 'Latitude: '  + position.coords.latitude      + '<br />' +
-                            'Longitude: ' + position.coords.longitude     + '<br />' +
-                            '<hr />'      + element.innerHTML;
-    }
- 
-    // onError Callback receives a PositionError object 
-    // 
-    function onWatchError(error) {
-        alert('code: '    + error.code    + '\n' +
-              'message: ' + error.message + '\n');
-    }
- 
-    // Options: throw an error if no update is received every 30 seconds. 
-    // 
-    var watchID = navigator.geolocation.watchPosition(onWatchSuccess, onWatchError, { timeout: 30000 });
-    
+	function onError(error) {
+		alert('code: ' + error.code + '\n' + 'message: ' + error.message + '\n');
+	}
+
+	
+	var onWatchSuccess = function(position) {
+		var element = document.getElementById('g');
+		element.innerHTML = 'Latitude: ' + position.coords.latitude + '<br />' + 'Longitude: ' + position.coords.longitude + '<br />' + '<hr />' + element.innerHTML;
+	};
+
+	function onWatchError(error) {
+		alert('code: ' + error.code + '\n' + 'message: ' + error.message + '\n');
 	}
 	
 	
