@@ -70,7 +70,7 @@
  
     navigator.geolocation.getCurrentPosition(onSuccess, onError);
 	
-	function onSuccess(position) {
+	function onWatchSuccess(position) {
         var element = document.getElementById('g');
         element.innerHTML = 'Latitude: '  + position.coords.latitude      + '<br />' +
                             'Longitude: ' + position.coords.longitude     + '<br />' +
@@ -79,14 +79,14 @@
  
     // onError Callback receives a PositionError object 
     // 
-    function onError(error) {
+    function onWatchError(error) {
         alert('code: '    + error.code    + '\n' +
               'message: ' + error.message + '\n');
     }
  
     // Options: throw an error if no update is received every 30 seconds. 
     // 
-    var watchID = navigator.geolocation.watchPosition(onSuccess, onError, { timeout: 30000 });
+    var watchID = navigator.geolocation.watchPosition(onWatchSuccess, onWatchError, { timeout: 30000 });
     
 	}
 	
